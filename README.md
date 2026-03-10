@@ -8,6 +8,5 @@
                     <h1>Interview Preparation Platform</h1>
                     <p>Practice technical and HR interviews in a structured, personalised way that converts preparation
                         into real offers.</p>
-                    <button onclick="showSignupModal()">Sign Up</button>
                 </div>
             </section>
