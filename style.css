@@ -1,0 +1,36 @@
+/* ---------- GLOBAL SETTINGS ---------- */
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body { background: #f7f9fc; color: #222; }
+
+/* ---------- HEADER & NAV ---------- */
+#publicHeader {
+    background: linear-gradient(90deg, #b312c0, #3b4edc);
+    padding: 15px 50px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.logo { font-size: 28px; font-weight: 800; cursor: pointer; }
+
+.login-btn {
+    background: #00e0c6; border: none; padding: 10px 25px;
+    border-radius: 25px; font-weight: bold; cursor: pointer;
+}
+
+/* ---------- HERO SECTION ---------- */
+.hero { display: flex; padding: 60px; gap: 40px; align-items: center; }
+.hero-img img { width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.hero-content h1 { font-size: 48px; color: #2b4ea1; }
+
+/* ---------- DASHBOARD & MODALS ---------- */
+.dashboard-page { background: #667eea; min-height: 100vh; color: white; }
+.modal {
+    display: none; position: fixed; top: 0; left: 0; 
+    width: 100%; height: 100%; background: rgba(0,0,0,0.7);
+    justify-content: center; align-items: center;
+}
+.modal-content { background: white; padding: 40px; border-radius: 15px; color: #333; }
