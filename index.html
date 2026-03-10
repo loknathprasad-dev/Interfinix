@@ -1,0 +1,2513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Interfinix – Interview Preparation Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+        /* ---------- GLOBAL ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            background: #f7f9fc;
+            color: #222;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            transition: color .3s ease;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #ff00cc, #7b2cff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* ---------- PUBLIC HEADER ---------- */
+        #publicHeader {
+            background: linear-gradient(90deg, #b312c0, #3b4edc);
+            padding: 15px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, .2);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 28px;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            color: #00e0c6;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 8px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, .15);
+        }
+
+        .login-btn {
+            background: #00e0c6;
+            color: #000;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 4px 15px #00e0c6aa;
+            border: none;
+            outline: none;
+            transition: background .3s ease, box-shadow .3s ease, transform .3s ease;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background: #00bfa1;
+            box-shadow: 0 6px 20px #00bfa1cc;
+            transform: translateY(-2px);
+        }
+
+        /* ---------- PAGE WRAPPER ---------- */
+        .page-wrapper {
+            max-width: 1200px;
+            margin: 40px auto 60px auto;
+            padding: 0 20px;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgb(36 37 38 / 6%);
+            gap: 40px;
+        }
+
+        .hero-img {
+            width: 48%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(59, 78, 220, .3);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .hero-img img {
+            width: 100%;
+            display: block;
+            border-radius: 20px;
+        }
+
+        .hero-img:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(59, 78, 220, .5);
+        }
+
+        .hero-content {
+            width: 50%;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #2b4ea1;
+            font-weight: 800;
+        }
+
+        .hero-content p {
+            color: #4d6f78;
+            font-size: 17px;
+            margin-bottom: 35px;
+        }
+
+        .hero-content button {
+            padding: 14px 45px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #9fa8ff, #e67cff);
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 25px #e67cffaa;
+            transition: background .3s ease, box-shadow .3s ease, transform .3s ease;
+        }
+
+        .hero-content button:hover {
+            background: linear-gradient(90deg, #7f81f2, #ca54ff);
+            box-shadow: 0 10px 30px #ca54ffdd;
+            transform: translateY(-3px);
+        }
+
+        /* ---------- HOME – FEATURES ---------- */
+        .features {
+            padding: 40px 0 60px;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 34px;
+            color: #2b4ea1;
+            margin-bottom: 40px;
+            font-weight: 800;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: linear-gradient(180deg, #2aa7c9, #1b5c74);
+            padding: 22px;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, .18);
+        }
+
+        .feature-inner {
+            background: #fff;
+            padding: 26px 22px 30px;
+            border-radius: 15px;
+        }
+
+        .feature-inner h3 {
+            margin-bottom: 12px;
+            font-size: 20px;
+            color: #1b5c74;
+            font-weight: 700;
+        }
+
+        .feature-inner p {
+            font-size: 14px;
+            color: #444;
+        }
+
+        /* ---------- ABOUT PAGE ---------- */
+        #aboutPage {
+            display: none;
+        }
+
+        .about-hero {
+            margin-top: 40px;
+            padding: 70px 40px;
+            background: linear-gradient(135deg, #6a5cff, #b312c0);
+            border-radius: 15px;
+            color: #fff;
+            text-align: center;
+            box-shadow: 0 8px 30px rgb(36 37 38 / 10%);
+        }
+
+        .about-hero h1 {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .about-hero p {
+            font-size: 18px;
+            opacity: .95;
+        }
+
+        .about-section {
+            max-width: 1100px;
+            margin: 40px auto 0 auto;
+            padding: 0 10px 40px;
+        }
+
+        .about-section h2 {
+            text-align: center;
+            font-size: 30px;
+            color: #224488;
+            margin-bottom: 22px;
+            font-weight: 800;
+        }
+
+        .about-section p {
+            text-align: center;
+            font-size: 16px;
+            color: #445;
+            max-width: 900px;
+            margin: 0 auto 14px auto;
+            line-height: 1.8;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 26px;
+        }
+
+        .step-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 22px 18px;
+            text-align: center;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, .06);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, .16);
+        }
+
+        .step-number {
+            width: 44px;
+            height: 44px;
+            margin: 0 auto 10px auto;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #ffebff, #7a3bff);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .step-title {
+            font-size: 17px;
+            color: #243b72;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .step-text {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .about-features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 26px;
+        }
+
+        .about-feature-card {
+            border-radius: 18px;
+            padding: 22px 20px;
+            color: #fff;
+            text-align: left;
+            background: linear-gradient(135deg, #9b5bff, #ff63b8);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, .18);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .about-feature-card:nth-child(2) {
+            background: linear-gradient(135deg, #5165ff, #7fdbff);
+        }
+
+        .about-feature-card:nth-child(3) {
+            background: linear-gradient(135deg, #ff8a5a, #ff5ba5);
+        }
+
+        .about-feature-card:nth-child(4) {
+            background: linear-gradient(135deg, #4ac1a3, #3b7dff);
+        }
+
+        .about-feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 22px 48px rgba(0, 0, 0, .25);
+        }
+
+        .about-feature-title {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .about-feature-sub {
+            font-size: 13px;
+            opacity: .96;
+        }
+
+        /* ---------- FAQ ---------- */
+        .faq-item {
+            margin-bottom: 14px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, .08);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 16px 20px;
+            background: #fff;
+            border: none;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 15px;
+            font-weight: 600;
+            color: #111827;
+            cursor: pointer;
+        }
+
+        .faq-arrow {
+            font-size: 16px;
+            color: #6b7280;
+            transition: transform .2s ease;
+        }
+
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px 16px 20px;
+            font-size: 14px;
+            color: #4b5563;
+            line-height: 1.7;
+            display: none;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* ---------- FOOTER ---------- */
+        #publicFooter {
+            background: linear-gradient(90deg, #b312c0, #3b4edc);
+            color: #fff;
+            padding: 40px 80px 30px;
+            margin-top: 40px;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -3px 25px rgb(187 45 182 / 50%);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        footer h4 {
+            margin-bottom: 14px;
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        footer a {
+            display: block;
+            color: #d5d5ff;
+            text-decoration: none;
+            margin-bottom: 8px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            opacity: .85;
+        }
+
+        /* ---------- DASHBOARD ---------- */
+        .dashboard-page {
+            display: none;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(90deg, #3b4edc, #b312c0);
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, .3);
+        }
+
+        .dash-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .dash-logo {
+            font-weight: 800;
+            font-size: 24px;
+        }
+
+        .dash-nav a {
+            color: #fff;
+            margin: 0 10px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .dash-nav a:hover {
+            text-decoration: underline;
+        }
+
+        .dash-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .dash-help {
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .dash-help:hover {
+            text-decoration: underline;
+        }
+
+        .dash-notification {
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dashboard-content {
+            padding: 50px 40px;
+            min-height: calc(100vh - 60px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ---- JOB FIELD AREA ---- */
+        #jobFieldSection {
+            max-width: 1100px;
+            width: 100%;
+            background: #ffffff10;
+            border-radius: 25px;
+            padding: 32px 26px 42px;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, .25);
+        }
+
+        .job-field-title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .job-field-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .job-card {
+            height: 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 18px 22px;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 26px;
+            background: radial-gradient(circle at top left, #ffffff, #c49dff);
+            color: #26224b;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
+            border: 1px solid rgba(255, 255, 255, .6);
+            transition: transform .22s ease, box-shadow .22s ease, background .22s ease, color .22s ease;
+        }
+
+        .job-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            background: radial-gradient(circle at top left, #fdfbff, #9f5dff);
+            box-shadow: 0 24px 55px rgba(0, 0, 0, .45);
+            color: #fff;
+        }
+
+        .job-card-icon {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .job-card-title {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .job-card-text {
+            font-size: 13px;
+            font-weight: 500;
+            opacity: .9;
+        }
+
+        /* ---- ROLE SECTION ---- */
+        #roleSection {
+            display: none;
+            max-width: 1100px;
+            width: 100%;
+            background: #ffffff10;
+            border-radius: 25px;
+            padding: 32px 26px 42px;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, .25);
+        }
+
+        .role-title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .role-sub {
+            text-align: center;
+            font-size: 15px;
+            opacity: .9;
+            margin-bottom: 25px;
+        }
+
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .role-card {
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 18px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #ffffff, #c49dff);
+            color: #26224b;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .25);
+            border: 1px solid rgba(255, 255, 255, .45);
+            padding: 14px 16px;
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+        }
+
+        .role-card:hover {
+            transform: translateY(-6px);
+            background: linear-gradient(135deg, #fdfbff, #8d4bff);
+            box-shadow: 0 20px 44px rgba(0, 0, 0, .4);
+            color: #fff;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 18px;
+            font-size: 14px;
+            cursor: pointer;
+            color: #e0e6ff;
+            text-decoration: underline;
+        }
+
+        /* ---------- SIDEBAR / MENU ---------- */
+        .sidebar {
+            position: fixed;
+            left: -260px;
+            top: 60px;
+            width: 260px;
+            height: calc(100vh - 60px);
+            background: linear-gradient(180deg, #b312c0, #3b4edc);
+            transition: left .3s ease;
+            z-index: 2000;
+            padding: 28px 18px 20px;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, .3);
+        }
+
+        .sidebar.show {
+            left: 0;
+        }
+
+        .menu-dots {
+            position: relative;
+            top: auto;
+            left: auto;
+            margin-right: 15px;
+            cursor: pointer;
+            z-index: 2001;
+            color: #333;
+            padding: 8px 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .95);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .menu-dots span {
+            width: 22px;
+            height: 3px;
+            border-radius: 10px;
+            background: #333;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+            padding: 18px;
+            background: rgba(255, 255, 255, .15);
+            border-radius: 18px;
+        }
+
+        .user-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #00e0c6, #00bfa1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: #000;
+        }
+
+        .user-details h3 {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 3px;
+        }
+
+        .user-details p {
+            color: rgba(255, 255, 255, .9);
+            font-size: 12px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-link {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            text-align: left;
+        }
+
+        .sidebar-link:hover {
+            background: rgba(255, 255, 255, .18);
+        }
+
+        .account-status {
+            text-align: center;
+            color: rgba(255, 255, 255, .8);
+            font-size: 13px;
+            margin-top: 16px;
+        }
+
+        /* ---------- MODALS ---------- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .7);
+            z-index: 3000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 18px;
+            max-width: 430px;
+            width: 90%;
+        }
+
+        .modal h2 {
+            font-size: 28px;
+            color: #2b4ea1;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d0d7de;
+            border-radius: 8px;
+            font-size: 15px;
+            background: #f8fafc;
+        }
+
+        .login-btn-modal,
+        .create-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+
+        .login-btn-modal {
+            background: #3b4edc;
+        }
+
+        .login-btn-modal:hover {
+            background: #2b3ec8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 78, 220, .4);
+        }
+
+        .create-btn {
+            background: linear-gradient(90deg, #9fa8ff, #e67cff);
+        }
+
+        .create-btn:hover {
+            background: linear-gradient(90deg, #7f81f2, #ca54ff);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(202, 84, 255, .4);
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width:900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px;
+            }
+
+            .hero-img,
+            .hero-content {
+                width: 100%;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .about-features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-content {
+                padding: 40px 20px;
+            }
+
+            .job-field-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .role-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width:600px) {
+            #publicHeader {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 18px;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1,
+            .about-hero h1 {
+                font-size: 30px;
+            }
+
+            .page-wrapper {
+                padding: 0 14px;
+            }
+
+            .job-field-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .role-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Jab practice shuru ho toh baaki sab hide karne ke liye */
+        body.practice-active #publicHeader,
+        body.practice-active #dashboardPage,
+        body.practice-active #publicFooter,
+        body.practice-active .sidebar {
+            display: none !important;
+        }
+
+        /* Nayi Question screen ka look */
+        .full-screen-practice {
+            display: none;
+            min-height: 100vh;
+            background: #020617;
+            /* Dark professional background */
+            color: #fff;
+            padding: 50px 20px;
+        }
+
+        /* Jab body par class ho tabhi ye dikhega */
+        body.practice-active .full-screen-practice {
+            display: block;
+        }
+
+        .practice-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .q-box {
+            background: #111827;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #1f2937;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PUBLIC HEADER -->
+    <header id="publicHeader">
+        <div class="logo" onclick="showHome()">INTERFINIX</div>
+        <div style="display:flex;align-items:center;gap:20px;">
+            <nav>
+                <a onclick="showAbout()">About</a>
+                <a onclick="showFaq()">FAQ</a>
+            </nav>
+
+            <button class="login-btn" onclick="showLoginModal()">Log In</button>
+        </div>
+    </header>
+
+    <!-- HOME + ABOUT WRAPPER -->
+    <div id="contentWrapper" class="page-wrapper">
+
+        <!-- HOME PAGE -->
+        <div id="homePage">
+            <section class="hero">
+                <div class="hero-img">
+                    <img src="https://img.freepik.com/free-photo/headhunters-interviewing-female-job-candidate_1163-4674.jpg?semt=ais_hybrid&w=740&q=80"
+                        alt="Person practicing for interview">
+                </div>
+                <div class="hero-content">
+                    <h1>Interview Preparation Platform</h1>
+                    <p>Practice technical and HR interviews in a structured, personalised way that converts preparation
+                        into real offers.</p>
+                    <button onclick="showSignupModal()">Sign Up</button>
+                </div>
+            </section>
+
+            <section class="features">
+                <h2>Core Features</h2>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="feature-inner">
+                            <h3>📄 Upload Resume</h3>
+                            <p>Generate custom interview questions from your resume and job role.</p>
+                        </div>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-inner">
+                            <h3>💼 Job Field</h3>
+                            <p>Select your target roles and get domain‑specific interview flows.</p>
+                        </div>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-inner">
+                            <h3>🤖 AI Feedback</h3>
+                            <p>Get instant scoring on clarity, confidence and relevance of answers.</p>
+                        </div>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-inner">
+                            <h3>📊 Dashboard</h3>
+                            <p>Track improvement across attempts and focus on weak topics.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <!-- ABOUT PAGE -->
+        <div id="aboutPage">
+            <section class="about-hero">
+                <h1>About Interfinix</h1>
+                <p>AI‑powered interview preparation platform built for students and job seekers.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>Our Vision</h2>
+                <p>
+                    Interfinix helps students master technical interviews through personalised AI mock practice
+                    sessions.
+                    From campus placements to dream company interviews, the platform prepares users for real‑world
+                    challenges.
+                </p>
+                <p>
+                    Every feature is designed with student needs in mind – from resume analysis to job‑specific question
+                    banks
+                    and progress tracking – so that interview anxiety can turn into confidence.
+                </p>
+            </section>
+
+            <section class="about-section">
+                <h2>How It Works</h2>
+                <p>Complete your journey from signup to certification in six simple steps.</p>
+
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Create Account</div>
+                        <div class="step-text">Sign up, verify details and set your career goal.</div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Select Role</div>
+                        <div class="step-text">Choose your target role and difficulty level.</div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Practice & Record</div>
+                        <div class="step-text">Answer mock questions while AI analyses your responses.</div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Track Progress</div>
+                        <div class="step-text">View scores, strengths and weak areas on dashboard.</div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">5</div>
+                        <div class="step-title">Invite Friends</div>
+                        <div class="step-text">Practice together and unlock premium features.</div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">6</div>
+                        <div class="step-title">Get Certificate</div>
+                        <div class="step-text">Download a completion certificate after consistent practice.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section" style="padding-bottom:20px;">
+                <h2>Core Features</h2>
+
+                <div class="about-features-grid">
+                    <div class="about-feature-card">
+                        <div class="about-feature-title">📄 Resume Upload</div>
+                        <div class="about-feature-sub">
+                            Upload your resume to generate questions that match your skills, projects and internships.
+                        </div>
+                    </div>
+                    <div class="about-feature-card">
+                        <div class="about-feature-title">🤖 AI Feedback</div>
+                        <div class="about-feature-sub">
+                            Get instant evaluation on structure, clarity and technical depth in every answer.
+                        </div>
+                    </div>
+                    <div class="about-feature-card">
+                        <div class="about-feature-title">💼 Job‑Specific Practice</div>
+                        <div class="about-feature-sub">
+                            Practice for web development, DSA, system design and company‑specific rounds.
+                        </div>
+                    </div>
+                    <div class="about-feature-card">
+                        <div class="about-feature-title">📊 Progress Tracking</div>
+                        <div class="about-feature-sub">
+                            Monitor attempts, average scores and improvements over time on a clean dashboard.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- FAQ PAGE -->
+        <div id="faqPage" style="display:none;">
+
+            <!-- FAQ HERO -->
+            <section style="margin-top:40px;padding:60px 40px;
+                    background:linear-gradient(135deg,#7b2cff,#b312c0);
+                    border-radius:15px;color:#fff;
+                    box-shadow:0 8px 30px rgb(36 37 38 / 10%);">
+                <h1 style="font-size:34px;font-weight:800;margin-bottom:10px;">
+                    Frequently Asked Questions
+                </h1>
+                <p style="font-size:15px;max-width:640px;line-height:1.7;">
+                    Everything you need to know about Interfinix — your AI‑powered interview and
+                    career preparation platform.
+                </p>
+
+                <div style="display:flex;gap:18px;margin-top:24px;flex-wrap:wrap;">
+                    <div style="background:#fff;color:#111827;padding:12px 18px;border-radius:999px;
+                        display:flex;align-items:center;box-shadow:0 10px 30px rgba(15,23,42,.18);">
+                        <span style="font-size:20px;margin-right:10px;">🔒</span>
+                        <div>
+                            <div style="font-size:13px;font-weight:600;">Private &amp; Secure</div>
+                            <div style="font-size:11px;color:#6b7280;">Your data stays yours.</div>
+                        </div>
+                    </div>
+                    <div style="background:#fff;color:#111827;padding:12px 18px;border-radius:999px;
+                        display:flex;align-items:center;box-shadow:0 10px 30px rgba(15,23,42,.18);">
+                        <span style="font-size:20px;margin-right:10px;">📊</span>
+                        <div>
+                            <div style="font-size:13px;font-weight:600;">Detailed Feedback</div>
+                            <div style="font-size:11px;color:#6b7280;">Improve with every session.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ LIST -->
+            <section style="margin:40px auto 60px auto;max-width:900px;">
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Who is Interfinix for?
+                        <span class="faq-arrow">⌄</span>
+                    </button>
+                    <div class="faq-answer">
+                        Interfinix is designed for students, freshers, and early‑career professionals
+                        preparing for internships, campus placements, and technical interviews in
+                        software and related fields.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How does Interfinix simulate real interviews?
+                        <span class="faq-arrow">⌄</span>
+                    </button>
+                    <div class="faq-answer">
+                        The platform builds structured rounds based on your chosen role, difficulty level
+                        and resume, then generates domain‑specific questions that feel like a real interview.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is my practice data private?
+                        <span class="faq-arrow">⌄</span>
+                    </button>
+                    <div class="faq-answer">
+                        Your voice and text responses are used only to improve your preparation experience
+                        and are not shared with recruiters or third parties without your consent.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How much does it cost?
+                        <span class="faq-arrow">⌄</span>
+                    </button>
+                    <div class="faq-answer">
+                        Interfinix can start as a free tool for students, with optional premium features
+                        such as advanced analytics, detailed AI feedback, or company‑specific packs.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Do I need any special setup?
+                        <span class="faq-arrow">⌄</span>
+                    </button>
+                    <div class="faq-answer">
+                        You only need a browser and stable internet; for best results, use a laptop with
+                        a microphone for voice‑based practice.
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <!-- PUBLIC FOOTER -->
+        <footer id="publicFooter">
+            <div class="footer-grid">
+                <section>
+                    <h4>INTERFINIX</h4>
+                    <p style="font-size:13px;line-height:1.6;">
+                        Empowering students for technical interviews through AI‑powered practice.
+                    </p>
+                </section>
+                <nav>
+                    <h4>Quick Links</h4>
+                    <a onclick="showAbout()">About</a>
+                    <a>Start Practice Interview</a>
+                    <a>Contact Us</a>
+                    <a onclick="showFaq()">FAQ</a>
+                </nav>
+                <nav>
+                    <h4>Get Started</h4>
+                    <a onclick="showLoginModal()">Login</a>
+                    <a>Pricing</a>
+                    <a onclick="showSignupModal()">Sign Up</a>
+                </nav>
+                <nav>
+                    <h4>Who We Help</h4>
+                    <a>Job Seekers</a>
+                    <a>College Students</a>
+                    <a>Hackathon Teams</a>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                © 2025 Interfinix. All rights reserved. | Terms of Service | Privacy Policy
+            </div>
+        </footer>
+    </div>
+
+    <!-- DASHBOARD PAGE -->
+    <div id="dashboardPage" class="dashboard-page">
+        <div class="dashboard-header">
+            <div class="dash-left">
+
+                <!-- HAMBURGER BUTTON INSIDE HEADER -->
+                <div id="menuDots" class="menu-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="dash-logo">INTERFINIX</div>
+                <div class="dash-nav">
+                    <a onclick="goDashboardHome()">Home</a>
+                    <a onclick="showReports()">Reports</a>
+                </div>
+            </div>
+            <div class="dash-right">
+                <span class="dash-help" onclick="showHelp()">Help</span>
+                <span class="dash-notification" onclick="onNotifyClick()">
+                    🔔 Notification
+                </span>
+            </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div id="sidebar" class="sidebar">
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">👤</div>
+                <div class="user-details">
+                    <h3 id="userNameDisplay">Welcome!</h3>
+                    <p id="userEmailDisplay">Account Created</p>
+                </div>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li><button class="sidebar-link" onclick="showUpload()">📄 Upload Resume</button></li>
+                <li><button class="sidebar-link" onclick="showInvite()">🤝 Invite</button></li>
+                <li><button class="sidebar-link" onclick="showBookmarks()">🔖 Bookmarks</button></li>
+                <li><button class="sidebar-link" onclick="logout()">🚪 Log Out</button></li>
+                <li><button class="sidebar-link" onclick="showSettings()">⚙️ Settings</button></li>
+            </ul>
+
+            <div class="account-status">✅ Account created successfully.</div>
+        </div>
+
+        <!-- DASHBOARD CONTENT -->
+        <div class="dashboard-content">
+
+            <!-- JOB FIELDS -->
+            <div id="jobFieldSection">
+                <h2 class="job-field-title">Select Job Field</h2>
+                <p style="text-align:center;font-size:14px;opacity:.9;margin-bottom:24px;">
+                    Choose the area you want to prepare for. You will see specific roles and mock interviews for that
+                    field.
+                </p>
+                <div class="job-field-grid">
+                    <div class="job-card" onclick="openRoleSection('Software Development')">
+                        <div class="job-card-icon">💻</div>
+                        <div class="job-card-title">Software Development</div>
+                        <div class="job-card-text">Core programming, OOP, APIs and SDLC.</div>
+                    </div>
+                    <div class="job-card" onclick="openRoleSection('Web Development')">
+                        <div class="job-card-icon">🌐</div>
+                        <div class="job-card-title">Web Development</div>
+                        <div class="job-card-text">Frontend, backend and full‑stack web apps.</div>
+                    </div>
+                    <div class="job-card" onclick="openRoleSection('App Development')">
+                        <div class="job-card-icon">📱</div>
+                        <div class="job-card-title">App Development</div>
+                        <div class="job-card-text">Android, iOS and cross‑platform apps.</div>
+                    </div>
+                    <div class="job-card" onclick="openRoleSection('Data Science')">
+                        <div class="job-card-icon">📊</div>
+                        <div class="job-card-title">Data Science</div>
+                        <div class="job-card-text">Data analysis, ML models and dashboards.</div>
+                    </div>
+                    <div class="job-card" onclick="openRoleSection('AI & ML')">
+                        <div class="job-card-icon">🤖</div>
+                        <div class="job-card-title">AI &amp; ML</div>
+                        <div class="job-card-text">Neural nets, MLOps and ML pipelines.</div>
+                    </div>
+                    <div class="job-card" onclick="openRoleSection('Cloud Computing')">
+                        <div class="job-card-icon">☁️</div>
+                        <div class="job-card-title">Cloud Computing</div>
+                        <div class="job-card-text">AWS, Azure, GCP and DevOps basics.</div>
+                    </div>
+                    <div class="job-card" onclick="openRoleSection('Cyber Security')">
+                        <div class="job-card-icon">🛡️</div>
+                        <div class="job-card-title">Cyber Security</div>
+                        <div class="job-card-text">Network security, vulns and tools.</div>
+                    </div>
+                    <div class="job-card" onclick="openRoleSection('Game Development')">
+                        <div class="job-card-icon">🎮</div>
+                        <div class="job-card-title">Game Development</div>
+                        <div class="job-card-text">Engines, gameplay and optimization.</div>
+                    </div>
+                    <div class="job-card" onclick="openRoleSection('D.S.A')">
+                        <div class="job-card-icon">🧠</div>
+                        <div class="job-card-title">D.S.A</div>
+                        <div class="job-card-text">Algorithms, coding rounds and CP.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROLE SECTION -->
+            <div id="roleSection">
+                <span class="back-link" onclick="backToJobFields()">← Back to Job Fields</span>
+                <h2 class="role-title" id="roleTitle">Select Role</h2>
+                <p class="role-sub" id="roleSubText"></p>
+                <div class="role-grid" id="roleGrid"></div>
+            </div>
+
+            <!-- ROLE DETAILS SECTION -->
+            <div id="roleDetailsSection" style="display:none;max-width:900px;width:100%;
+                 background:#020617;border-radius:22px;padding:28px 26px 30px;
+                 box-shadow:0 20px 50px rgba(0,0,0,.5);color:#e5e7eb;margin-top:24px;">
+                <h2 id="roleDetailsTitle" style="font-size:22px;font-weight:800;margin-bottom:8px;"></h2>
+                <p id="roleDetailsSubtitle" style="font-size:13px;opacity:.9;margin-bottom:16px;"></p>
+
+                <ul id="roleInstructions" style="font-size:13px;line-height:1.6;margin-bottom:18px;padding-left:18px;">
+                </ul>
+
+                <button onclick="startPracticeForCurrentRole()" style="padding:10px 20px;border-radius:999px;border:none;
+                        background:#22c55e;color:#022c22;font-weight:700;
+                        font-size:14px;cursor:pointer;">
+                    Start Practice
+                </button>
+            </div>
+
+            <!-- QUIZ SECTION -->
+            <div id="quizSection" style="display:none;max-width:900px;width:100%;
+                 background:#020617;border-radius:22px;padding:24px 22px 26px;
+                 box-shadow:0 20px 50px rgba(0,0,0,.5);color:#e5e7eb;margin-top:24px;">
+                <h2 id="quizTitle" style="font-size:20px;font-weight:800;margin-bottom:10px;"></h2>
+                <p id="quizSubtitle" style="font-size:13px;opacity:.85;margin-bottom:16px;"></p>
+
+                <div id="quizQuestionsContainer"></div>
+
+                <button onclick="submitQuiz()" style="margin-top:18px;padding:10px 20px;border-radius:999px;border:none;
+                        background:#22c55e;color:#022c22;font-weight:700;
+                        font-size:14px;cursor:pointer;">
+                    Submit Test
+                </button>
+            </div>
+
+            <!-- REPORTS SECTION -->
+            <div id="reportsSection" style="display:none;max-width:1100px;width:100%;
+                 background:#ffffff10;border-radius:25px;padding:28px 24px 32px;
+                 backdrop-filter:blur(6px);box-shadow:0 18px 40px rgba(0,0,0,.25);">
+
+                <h2 style="text-align:center;font-size:26px;font-weight:800;margin-bottom:8px;">
+                    Reports
+                </h2>
+                <p style="text-align:center;font-size:13px;opacity:.9;margin-bottom:18px;">
+                    View your performance dashboard and detailed feedback based on quizzes.
+                </p>
+
+                <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:22px;">
+                    <div onclick="openReportTab('dashboard')" style="flex:1 1 220px;max-width:320px;
+                         padding:16px 18px;border-radius:18px;cursor:pointer;
+                         background:linear-gradient(135deg,#22c55e,#16a34a);
+                         box-shadow:0 14px 32px rgba(0,0,0,.35);">
+                        <div style="font-size:22px;margin-bottom:4px;">📊</div>
+                        <div style="font-weight:800;margin-bottom:4px;">Dashboard</div>
+                        <div style="font-size:12px;opacity:.9;">Overall performance and certificates.</div>
+                    </div>
+
+                    <div onclick="openReportTab('feedback')" style="flex:1 1 220px;max-width:320px;
+                         padding:16px 18px;border-radius:18px;cursor:pointer;
+                         background:linear-gradient(135deg,#3b82f6,#1d4ed8);
+                         box-shadow:0 14px 32px rgba(0,0,0,.35);">
+                        <div style="font-size:22px;margin-bottom:4px;">💬</div>
+                        <div style="font-weight:800;margin-bottom:4px;">Feedback</div>
+                        <div style="font-size:12px;opacity:.9;">Tips based on your recent quizzes.</div>
+                    </div>
+                </div>
+
+                <!-- DASHBOARD REPORT CONTENT -->
+                <div id="reportDashboard" style="display:none;background:#020617;border-radius:20px;
+                     padding:22px 20px 24px;margin-bottom:18px;border:1px solid #111827;color:#e5e7eb;">
+                    <h3 style="font-size:18px;font-weight:800;margin-bottom:6px;">Performance Analysis</h3>
+                    <p style="font-size:13px;opacity:.85;margin-bottom:14px;">
+                        Recent quiz performance summary by role. Use it to track your progress.
+                    </p>
+
+                    <div id="performanceChart"></div>
+
+                    <div style="margin-top:20px;padding-top:14px;border-top:1px solid #111827;">
+                        <h4 style="font-size:16px;font-weight:800;margin-bottom:6px;">Certificate Generation</h4>
+                        <p style="font-size:13px;opacity:.9;margin-bottom:10px;">
+                            Complete at least 3 quizzes with average score above 60% to unlock a practice certificate.
+                        </p>
+                        <button onclick="generateCertificate()" style="padding:9px 16px;border-radius:999px;border:none;
+                                background:#eab308;color:#1f2937;font-weight:700;font-size:13px;cursor:pointer;">
+                            Generate Certificate (demo)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- FEEDBACK REPORT CONTENT -->
+                <div id="reportFeedback" style="display:none;background:#020617;border-radius:20px;
+                     padding:22px 20px 24px;border:1px solid #111827;color:#e5e7eb;">
+                    <h3 style="font-size:18px;font-weight:800;margin-bottom:6px;">Result Analysis</h3>
+                    <p style="font-size:13px;opacity:.85;margin-bottom:14px;">
+                        Tips generated using your latest quiz scores. Focus on these areas in the next practice.
+                    </p>
+
+                    <ul id="feedbackList" style="font-size:13px;line-height:1.7;padding-left:18px;"></ul>
+                </div>
+            </div>
+
+            <!-- INVITE SECTION -->
+            <div id="inviteSection" style="display:none;max-width:1100px;width:100%;background:rgba(15,23,42,.5);
+                 border-radius:30px;padding:40px 40px 46px;backdrop-filter:blur(10px);
+                 box-shadow:0 24px 60px rgba(0,0,0,.35);">
+                <h2 style="text-align:center;font-size:32px;font-weight:800;margin-bottom:10px;">
+                    Invite Friends
+                </h2>
+                <p style="text-align:center;font-size:15px;opacity:.9;margin-bottom:28px;">
+                    Share this link to invite your friends to Interfinix.
+                </p>
+
+                <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:28px;">
+                    <input id="inviteLink" type="text" readonly value="https://interfinix.app/invite/your-code" style="max-width:520px;width:100%;padding:12px 16px;border-radius:999px;
+                           border:1px solid rgba(255,255,255,.35);background:rgba(15,23,42,.6);
+                           color:#e5e7eb;font-size:14px;outline:none;">
+                    <button onclick="copyInviteLink()" style="padding:12px 20px;border-radius:999px;border:none;
+                            background:#22c55e;color:#fff;font-weight:600;font-size:14px;
+                            cursor:pointer;min-width:80px;">
+                        Copy
+                    </button>
+                </div>
+
+                <h3 style="text-align:center;font-size:15px;margin-bottom:14px;">Share via</h3>
+
+                <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+                    <button onclick="shareInvite('whatsapp')" style="padding:10px 18px;border-radius:999px;border:none;
+                            background:#25D366;color:#fff;font-size:13px;font-weight:600;cursor:pointer;">
+                        WhatsApp
+                    </button>
+                    <button onclick="shareInvite('telegram')" style="padding:10px 18px;border-radius:999px;border:none;
+                            background:#0088cc;color:#fff;font-size:13px;font-weight:600;cursor:pointer;">
+                        Telegram
+                    </button>
+                    <button onclick="shareInvite('sms')" style="padding:10px 18px;border-radius:999px;border:none;
+                            background:#020617;color:#e5e7eb;font-size:13px;font-weight:600;cursor:pointer;">
+                        Message
+                    </button>
+                    <button onclick="shareInvite('email')" style="padding:10px 18px;border-radius:999px;border:none;
+                            background:#ea4335;color:#fff;font-size:13px;font-weight:600;cursor:pointer;">
+                        Email
+                    </button>
+                </div>
+            </div>
+
+            <!-- BOOKMARK SECTION -->
+            <div id="bookmarkSection" style="display:none;max-width:1100px;width:100%;background:#ffffff10;border-radius:25px;
+               padding:32px 26px 42px;backdrop-filter:blur(6px);box-shadow:0 18px 40px rgba(0,0,0,.25);">
+                <h2 class="job-field-title">Bookmarks</h2>
+                <p style="text-align:center;margin-bottom:10px;">
+                    Saved questions and sessions will appear here.
+                </p>
+                <p style="text-align:center;font-size:14px;opacity:.9;">
+                    Start practising interviews and mark important questions as bookmarked.
+                </p>
+            </div>
+
+            <div id="settingsSection"
+                style="display:none; max-width:1100px; width:100%; background:#ffffff10; border-radius:25px; padding:32px 26px; backdrop-filter:blur(6px); box-shadow:0 18px 40px rgba(0,0,0,.25);">
+                <h2 class="job-field-title">Account Settings</h2>
+                <p style="text-align:center; margin-bottom:30px; opacity:0.9;">Manage your profile and account security.
+                </p>
+
+                <div style="max-width:500px; margin:0 auto;">
+                    <div class="q-box" style="margin-bottom:20px;">
+                        <h3 style="margin-bottom:15px; font-size:18px;">Update Profile</h3>
+                        <div class="form-group">
+                            <label>Display Name</label>
+                            <input type="text" id="updateName"
+                                style="width:100%; padding:10px; border-radius:8px; background:#020617; border:1px solid #374151; color:#fff;">
+                        </div>
+                        <button onclick="updateProfile()" class="login-btn"
+                            style="width:100%; margin-top:15px; background:#6366f1;">Save Changes</button>
+                    </div>
+
+                    <div class="q-box">
+                        <h3 style="margin-bottom:15px; font-size:18px;">Change Password</h3>
+                        <div class="form-group">
+                            <label>New Password</label>
+                            <input type="password" id="newPassword"
+                                style="width:100%; padding:10px; border-radius:8px; background:#020617; border:1px solid #374151; color:#fff;">
+                        </div>
+                        <button onclick="changePassword()" class="login-btn"
+                            style="width:100%; margin-top:15px; background:#ff00cc;">Update Password</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UPLOAD RESUME SECTION -->
+            <div id="uploadSection" style="display:none;max-width:700px;width:100%;background:#f9fafb;
+                 border-radius:24px;padding:32px 32px 30px;
+                 box-shadow:0 20px 50px rgba(15,23,42,.18);">
+                <h2 style="text-align:center;font-size:28px;font-weight:800;margin-bottom:8px;color:#111827;">
+                    Upload Resume
+                </h2>
+                <p style="text-align:center;font-size:14px;color:#6b7280;margin-bottom:24px;">
+                    Please upload your resume in PDF or DOCX format.
+                </p>
+
+                <div style="border:2px dashed #d1d5db;border-radius:18px;padding:40px 20px;
+                            text-align:center;background:#f3f4f6;margin-bottom:24px;">
+                    <div style="display:inline-flex;align-items:center;justify-content:center;
+                                width:60px;height:60px;border-radius:16px;background:#e5e7eb;
+                                margin-bottom:14px;">
+                        <span style="font-size:26px;color:#4b5563;">⬆</span>
+                    </div>
+                    <p style="font-size:14px;color:#4b5563;margin-bottom:6px;">
+                        Drag &amp; drop or <label for="resumeFile" style="color:#2563eb;cursor:pointer;">Browse</label>
+                    </p>
+                    <p style="font-size:12px;color:#9ca3af;">PDF, DOC, DOCX up to 5MB.</p>
+                    <input id="resumeFile" type="file" accept=".pdf,.doc,.docx" style="display:none;">
+                </div>
+
+                <button onclick="submitResume()" style="width:100%;padding:12px 16px;border-radius:999px;border:none;
+                        background:#4b5563;color:#fff;font-weight:600;font-size:14px;cursor:pointer;">
+                    Submit Application
+                </button>
+            </div>
+
+            <!-- HELP SECTION -->
+            <div id="helpSection" style="display:none;max-width:1100px;width:100%;">
+                <section style="padding:50px 40px;
+                    background:linear-gradient(135deg,#7b2cff,#b312c0);
+                    border-radius:20px 20px 0 0;color:#fff;
+                    box-shadow:0 8px 30px rgb(15 23 42 / 40%);">
+                    <h2 style="font-size:32px;font-weight:800;margin-bottom:10px;">
+                        Need Help with Interfinix?
+                    </h2>
+                    <p style="font-size:15px;max-width:620px;line-height:1.7;">
+                        Share your problem with the support team and drop your own suggestions.
+                        Describe issues in detail and send feedback in one place.
+                    </p>
+                </section>
+
+                <section style="background:#020617;padding:32px 40px 40px 40px;
+                    border-radius:0 0 20px 20px;">
+                    <div style="margin-bottom:30px;">
+                        <div style="background:#020617;border-radius:16px;
+                        padding:18px 20px;margin-bottom:14px;border:1px solid #111827;">
+                            <h3 style="color:#fff;font-size:15px;margin-bottom:4px;">Real-time support</h3>
+                            <p style="color:#9ca3af;font-size:13px;">
+                                Get responses within 24 hours for most issues, including account, billing and mock
+                                interview problems.
+                            </p>
+                        </div>
+                        <div style="background:#020617;border-radius:16px;
+                        padding:18px 20px;border:1px solid #111827;">
+                            <h3 style="color:#fff;font-size:15px;margin-bottom:4px;">Share your experience</h3>
+                            <p style="color:#9ca3af;font-size:13px;">
+                                Use the suggestion box to tell what is working well and what should be improved in
+                                Interfinix.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="background:#020617;border-radius:16px;padding:24px 22px;margin-bottom:28px;
+                    border:1px solid #111827;">
+                        <h3 style="color:#fff;font-size:18px;margin-bottom:4px;">Describe your problem</h3>
+                        <p style="color:#9ca3af;font-size:13px;margin-bottom:18px;">
+                            Write clearly so that the support team can understand and solve your issue fast.
+                        </p>
+
+                        <div style="display:flex;gap:14px;margin-bottom:14px;flex-wrap:wrap;">
+                            <input type="text" placeholder="Your name" style="flex:1;min-width:200px;padding:10px 12px;border-radius:8px;
+                           border:1px solid #1f2937;background:#020617;
+                           color:#e5e7eb;font-size:13px;">
+                            <input type="email" placeholder="you@example.com" style="flex:1;min-width:200px;padding:10px 12px;border-radius:8px;
+                           border:1px solid #1f2937;background:#020617;
+                           color:#e5e7eb;font-size:13px;">
+                        </div>
+
+                        <select style="width:100%;padding:10px 12px;border-radius:8px;
+                       border:1px solid #1f2937;background:#020617;
+                       color:#e5e7eb;font-size:13px;margin-bottom:14px;">
+                            <option selected>Select category</option>
+                            <option>Account or login issue</option>
+                            <option>Billing or payment</option>
+                            <option>Mock interview problem</option>
+                            <option>Bug or performance issue</option>
+                            <option>Other</option>
+                        </select>
+
+                        <textarea rows="4"
+                            placeholder="Describe what happened, steps to reproduce, and what you expected to see."
+                            style="width:100%;padding:10px 12px;border-radius:8px;
+                       border:1px solid #1f2937;background:#020617;
+                       color:#e5e7eb;font-size:13px;margin-bottom:10px;"></textarea>
+
+                        <label style="display:flex;align-items:center;gap:8px;
+                         color:#9ca3af;font-size:12px;margin-bottom:14px;">
+                            <input type="checkbox">
+                            <span>Allow Interfinix to use my logs to debug this issue.</span>
+                        </label>
+
+                        <button style="padding:10px 22px;border-radius:999px;border:none;
+                       background:#7c3aed;color:#fff;font-weight:600;
+                       font-size:14px;cursor:pointer;">
+                            Send to Help Team
+                        </button>
+                    </div>
+
+                    <div style="background:#020617;border-radius:16px;padding:24px 22px;
+                    border:1px solid #111827;">
+                        <h3 style="color:#fff;font-size:18px;margin-bottom:4px;">Suggestion box</h3>
+                        <p style="color:#9ca3af;font-size:13px;margin-bottom:18px;">
+                            Share your opinions, ideas, or improvement suggestions. This helps the team plan future
+                            updates.
+                        </p>
+
+                        <select style="width:100%;padding:10px 12px;border-radius:8px;
+                       border:1px solid #1f2937;background:#020617;
+                       color:#e5e7eb;font-size:13px;margin-bottom:14px;">
+                            <option selected>Choose one</option>
+                            <option>New feature</option>
+                            <option>Improvement</option>
+                            <option>Bug report</option>
+                            <option>Other</option>
+                        </select>
+
+                        <textarea rows="3" placeholder="Write your idea or opinion in detail..." style="width:100%;padding:10px 12px;border-radius:8px;
+                       border:1px solid #1f2937;background:#020617;
+                       color:#e5e7eb;font-size:13px;margin-bottom:10px;"></textarea>
+
+                        <label style="display:flex;align-items:center;gap:8px;
+                         color:#9ca3af;font-size:12px;margin-bottom:14px;">
+                            <input type="checkbox">
+                            <span>Send anonymously (do not attach my name &amp; email).</span>
+                        </label>
+
+                        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                            <button style="padding:10px 22px;border-radius:999px;border:none;
+                           background:#7c3aed;color:#fff;font-weight:600;
+                           font-size:14px;cursor:pointer;">
+                                Submit suggestion
+                            </button>
+                            <button style="padding:10px 22px;border-radius:999px;border:none;
+                           background:#111827;color:#e5e7eb;font-size:14px;
+                           cursor:pointer;">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIGNUP MODAL -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <h2 class="gradient-text" style="margin-bottom:16px;font-size:28px;font-weight:800;">Create Account</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupUserId" class="gradient-text">Enter User Id</label>
+                    <input type="text" id="signupUserId" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Enter Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirm">Re‑enter Password</label>
+                    <input type="password" id="signupConfirm" required>
+                </div>
+                <button type="submit" class="create-btn">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content" style="max-width:460px;">
+            <h2 class="gradient-text" style="margin-bottom:8px;font-size:32px;font-weight:800;">Log In</h2>
+            <p style="margin-bottom:24px;font-size:14px;color:#555;">
+                Not a member?
+                <span style="color:#eab308;font-weight:600;cursor:pointer;text-decoration:underline;"
+                    onclick="openSignupFromLogin()">Sign up.</span>
+            </p>
+
+            <button type="button" style="width:100%;padding:12px 14px;border-radius:6px;border:1px solid #d0d7de;
+                      background:#fff;display:flex;align-items:center;justify-content:center;
+                      gap:8px;font-size:14px;font-weight:600;color:#24292f;cursor:pointer;margin-bottom:6px;">
+                <span style="font-size:16px;">G</span>
+                <span>Continue with Google</span>
+            </button>
+
+            <div style="display:flex;align-items:center;gap:10px;margin:18px 0;">
+                <div style="flex:1;height:1px;background:#e4e7eb;"></div>
+                <span style="font-size:12px;color:#6b7280;">or</span>
+                <div style="flex:1;height:1px;background:#e4e7eb;"></div>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginUserId" class="gradient-text">User Id</label>
+                    <input type="text" id="loginUserId" placeholder="Enter your user id" required>
+                </div>
+                <div class="form-group" style="margin-bottom:10px;">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                </div>
+
+                <div style="margin-bottom:18px;">
+                    <button type="button" onclick="onForgotPassword()" style="border:none;background:none;color:#111827;font-size:12px;
+                              text-decoration:underline;cursor:pointer;padding:0;">
+                        Forgot password?
+                    </button>
+                </div>
+
+                <button type="submit" style="width:100%;padding:13px 16px;border-radius:4px;border:1px solid #e5e7eb;
+                        background:#111827;color:#fff;font-weight:700;font-size:15px;
+                        cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">
+                    Log In
+                    <span style="font-size:16px;">➜</span>
+                </button>
+
+                <p style="margin-top:14px;font-size:12px;color:#6b7280;">
+                    Need help?
+                    <span style="color:#111827;text-decoration:underline;cursor:pointer;">Email us.</span>
+                </p>
+            </form>
+        </div>
+    </div>
+    <div id="fullPracticeOverlay" class="full-screen-practice">
+        <div class="practice-content">
+            <button onclick="exitPracticeMode()"
+                style="background:none; color:#6366f1; border:none; cursor:pointer; font-weight:700; margin-bottom:20px;">
+                ← Back to Dashboard
+            </button>
+
+            <h1 id="fsTitle" style="font-size:32px; margin-bottom:10px;">Practice Session</h1>
+            <p id="fsSubtitle" style="opacity:0.7; margin-bottom:40px;"></p>
+
+            <div id="fsQuestionList"></div>
+
+            <button onclick="submitQuiz()" class="create-btn" style="margin-top:30px;">
+                Complete & Submit Interview
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = null;
+        let isAccountCreated = false;
+        let currentRole = null;   // for role details + quiz
+        const quizHistory = [];   // { roleName, scorePercent }
+
+        const publicHeader = document.getElementById('publicHeader');
+        const contentWrapper = document.getElementById('contentWrapper');
+        const publicFooter = document.getElementById('publicFooter');
+        const dashboardPage = document.getElementById('dashboardPage');
+        const homePage = document.getElementById('homePage');
+        const aboutPage = document.getElementById('aboutPage');
+        const faqPage = document.getElementById('faqPage');
+
+        function showHome() {
+            dashboardPage.style.display = 'none';
+            publicHeader.style.display = 'flex';
+            contentWrapper.style.display = 'block';
+            publicFooter.style.display = 'block';
+
+            homePage.style.display = 'block';
+            aboutPage.style.display = 'none';
+            faqPage.style.display = 'none';
+
+            window.scrollTo(0, 0);
+        }
+
+        function showAbout() {
+            dashboardPage.style.display = 'none';
+            publicHeader.style.display = 'flex';
+            contentWrapper.style.display = 'block';
+            publicFooter.style.display = 'block';
+
+            homePage.style.display = 'none';
+            aboutPage.style.display = 'block';
+            faqPage.style.display = 'none';
+
+            window.scrollTo(0, 0);
+        }
+
+        function showFaq() {
+            dashboardPage.style.display = 'none';
+            publicHeader.style.display = 'flex';
+            contentWrapper.style.display = 'block';
+            publicFooter.style.display = 'block';
+
+            homePage.style.display = 'none';
+            aboutPage.style.display = 'none';
+            faqPage.style.display = 'block';
+
+            window.scrollTo(0, 0);
+        }
+
+        function showSignupModal() {
+            document.getElementById('signupModal').classList.add('show');
+        }
+
+        function showLoginModal() {
+            document.getElementById('loginModal').classList.add('show');
+        }
+
+        function openSignupFromLogin() {
+            document.getElementById('loginModal').classList.remove('show');
+            document.getElementById('signupModal').classList.add('show');
+        }
+
+        // SIGNUP
+        const signupForm = document.getElementById('signupForm');
+        const signupModal = document.getElementById('signupModal');
+        const loginModal = document.getElementById('loginModal');
+
+        signupForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const userId = document.getElementById('signupUserId').value.trim();
+            const password = document.getElementById('signupPassword').value;
+            const confirm = document.getElementById('signupConfirm').value;
+
+            if (!userId) {
+                alert('Please enter User Id');
+                return;
+            }
+            if (password !== confirm) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            const userData = { userId, password };
+
+            currentUser = userData;
+            isAccountCreated = true;
+            localStorage.setItem('interfinixUser', JSON.stringify(userData));
+
+            signupModal.classList.remove('show');
+            this.reset();
+
+            setTimeout(() => {
+                showLoginModal();
+            }, 300);
+
+            alert(`Account created for ${userId}. Please log in.`);
+        });
+
+        // LOGIN
+        const loginForm = document.getElementById('loginForm');
+
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const userId = document.getElementById('loginUserId').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            const saved = localStorage.getItem('interfinixUser');
+            if (!saved) {
+                alert('No account found. Please sign up first.');
+                return;
+            }
+            const savedUser = JSON.parse(saved);
+
+            if (savedUser.userId !== userId || savedUser.password !== password) {
+                alert('Invalid User Id or Password!');
+                return;
+            }
+
+            currentUser = savedUser;
+            isAccountCreated = true;
+
+            loginModal.classList.remove('show');
+            this.reset();
+
+            document.getElementById('userNameDisplay').textContent = userId;
+            document.getElementById('userEmailDisplay').textContent = 'Account created';
+            document.getElementById('userAvatar').textContent = userId.charAt(0).toUpperCase();
+
+            publicHeader.style.display = 'none';
+            contentWrapper.style.display = 'none';
+            publicFooter.style.display = 'none';
+            dashboardPage.style.display = 'block';
+            window.scrollTo(0, 0);
+            alert(`Welcome back ${userId}!`);
+        });
+
+        function onForgotPassword() {
+            const userId = document.getElementById('loginUserId').value.trim();
+            if (!userId) {
+                alert('Enter your User Id first, then click Forgot password.');
+            } else {
+                alert('Password reset link would be sent to the registered email for User Id: ' + userId);
+            }
+        }
+
+        // LOGOUT
+        function logout() {
+            if (!currentUser) {
+                showHome();
+                return;
+            }
+            alert('You have been logged out.');
+            currentUser = null;
+            isAccountCreated = false;
+
+            dashboardPage.style.display = 'none';
+            publicHeader.style.display = 'flex';
+            contentWrapper.style.display = 'block';
+            publicFooter.style.display = 'block';
+            document.getElementById('sidebar').classList.remove('show');
+            showHome();
+        }
+
+        // DASHBOARD HOME
+        function goDashboardHome() {
+            hideAllDashboardSections();
+            document.getElementById('jobFieldSection').style.display = 'block';
+            document.getElementById('roleDetailsSection').style.display = 'none';
+            document.getElementById('quizSection').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        // SIDEBAR TOGGLE
+        document.getElementById('menuDots').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('show');
+        });
+
+        document.addEventListener('click', e => {
+            const s = document.getElementById('sidebar');
+            const d = document.getElementById('menuDots');
+            if (!s.contains(e.target) && !d.contains(e.target)) {
+                s.classList.remove('show');
+            }
+        });
+
+        // MODAL CLOSE ON BACKDROP
+        document.querySelectorAll('.modal').forEach(m => {
+            m.addEventListener('click', e => {
+                if (e.target === m) {
+                    m.classList.remove('show');
+                }
+            });
+        });
+
+        // NOTIFICATION
+        function onNotifyClick() {
+            if (isAccountCreated) {
+                alert('No new notifications. Start practicing interviews!');
+            }
+        }
+
+        /* ---------- ROLES DATA (with icons + desc + key) ---------- */
+        const rolesByField = {
+            "Software Development": [
+                { name: "Software Engineer", icon: "💻", desc: "OOP, APIs, debugging and SDLC.", key: "swe" },
+                { name: "Full Stack Developer", icon: "🧩", desc: "Frontend + backend + databases.", key: "fullstack" },
+                { name: "Front End Developer", icon: "🖼️", desc: "UI, UX and web performance.", key: "frontend" },
+                { name: "Backend Developer", icon: "🗄️", desc: "REST APIs, auth and scaling.", key: "backend" }
+            ],
+            "Web Development": [
+                { name: "Frontend Development", icon: "🎨", desc: "HTML, CSS, JS and frameworks.", key: "web_frontend" },
+                { name: "Backend Development", icon: "⚙️", desc: "Node/Express, DB design.", key: "web_backend" },
+                { name: "Full Stack Development", icon: "🔗", desc: "End‑to‑end web projects.", key: "web_fullstack" },
+                { name: "React Developer", icon: "⚛️", desc: "SPA, hooks, state management.", key: "react" }
+            ],
+            "App Development": [
+                { name: "Android Developer", icon: "🤖", desc: "Kotlin/Java, Android SDK.", key: "android" },
+                { name: "iOS Developer", icon: "📱", desc: "Swift, UIKit/SwiftUI.", key: "ios" },
+                { name: "Flutter Developer", icon: "🦋", desc: "Dart, cross‑platform UIs.", key: "flutter" },
+                { name: "React Native Developer", icon: "📲", desc: "JS/TS mobile apps.", key: "rnative" }
+            ],
+            "Data Science": [
+                { name: "Data Analyst", icon: "📊", desc: "SQL, Excel, dashboards.", key: "da" },
+                { name: "Data Scientist", icon: "📈", desc: "ML models, experiments.", key: "ds" },
+                { name: "ML Engineer", icon: "🧠", desc: "Productionizing ML.", key: "ml" },
+                { name: "BI Developer", icon: "📉", desc: "Reports and BI tools.", key: "bi" }
+            ],
+            "AI & ML": [
+                { name: "ML Engineer", icon: "🤖", desc: "Pipelines, monitoring.", key: "ai_ml_engineer" },
+                { name: "AI Researcher", icon: "📚", desc: "New models and papers.", key: "ai_research" },
+                { name: "MLOps Engineer", icon: "⚙️", desc: "CI/CD for ML systems.", key: "mlops" },
+                { name: "NLP Engineer", icon: "🔤", desc: "Text, LLMs and NLP tasks.", key: "nlp" }
+            ],
+            "Cloud Computing": [
+                { name: "Cloud Engineer", icon: "☁️", desc: "Deploy apps to cloud.", key: "cloud_eng" },
+                { name: "DevOps Engineer", icon: "🚀", desc: "CI/CD, infra as code.", key: "devops" },
+                { name: "Cloud Architect", icon: "🏗️", desc: "Design cloud systems.", key: "cloud_arch" },
+                { name: "Site Reliability Engineer", icon: "📡", desc: "Reliability and SLOs.", key: "sre" }
+            ],
+            "Cyber Security": [
+                { name: "Security Analyst", icon: "🛡️", desc: "Monitor and respond.", key: "sec_analyst" },
+                { name: "Penetration Tester", icon: "🗝️", desc: "Find and exploit vulns.", key: "pentest" },
+                { name: "Security Engineer", icon: "🔐", desc: "Build secure systems.", key: "sec_eng" },
+                { name: "SOC Engineer", icon: "📟", desc: "Logs, alerts, incidents.", key: "soc" }
+            ],
+            "Game Development": [
+                { name: "Unity Developer", icon: "🎮", desc: "C#, Unity engine.", key: "unity" },
+                { name: "Unreal Developer", icon: "🕹️", desc: "C++ / Blueprint.", key: "unreal" },
+                { name: "Gameplay Programmer", icon: "🎯", desc: "Game mechanics.", key: "gameplay" },
+                { name: "Game Designer", icon: "📝", desc: "Systems and levels.", key: "gamedesign" }
+            ],
+            "D.S.A": [
+                { name: "Problem Solving", icon: "🧠", desc: "Logic and patterns.", key: "ps" },
+                { name: "Competitive Programmer", icon: "🏆", desc: "Timed coding rounds.", key: "cp" },
+                { name: "Algorithm Engineer", icon: "📐", desc: "Optimized solutions.", key: "algoeng" },
+                { name: "Coding Interview Prep", icon: "💼", desc: "FAANG‑style rounds.", key: "codingprep" }
+            ]
+        };
+
+        // 10 questions per role key (example)
+        const quizQuestionsByRole = {
+            swe: [
+                "Explain the SDLC stages you know.",
+                "What is the difference between a class and an object?",
+                "What is an API? Give a real example.",
+                "How do you handle errors in your code?",
+                "Explain time and space complexity in simple words.",
+                "What is git and why is it used?",
+                "Tell me about a debugging issue you solved.",
+                "What is unit testing?",
+                "Explain REST architecture briefly.",
+                "Describe your favourite software project."
+            ],
+            frontend: [
+                "How does the browser render a web page?",
+                "What is the difference between margin and padding?",
+                "Explain CSS flexbox in your own words.",
+                "What is DOM and how do you manipulate it?",
+                "What are semantic HTML tags?",
+                "How do you optimise page performance?",
+                "What is the difference between let, var and const?",
+                "Explain event bubbling.",
+                "What is responsive design?",
+                "Describe a frontend project you have built."
+            ]
+        };
+
+        function openRoleSection(fieldName) {
+            const title = document.getElementById('roleTitle');
+            const sub = document.getElementById('roleSubText');
+            const grid = document.getElementById('roleGrid');
+
+            title.textContent = `Select Role – ${fieldName}`;
+            sub.textContent = `Choose your target role in ${fieldName} to start practising relevant interview questions.`;
+
+            grid.innerHTML = "";
+            const roles = rolesByField[fieldName] || [];
+            roles.forEach(role => {
+                const div = document.createElement('div');
+                div.className = 'role-card';
+                div.innerHTML = `
+                <div style="font-size:22px;margin-bottom:4px;">${role.icon}</div>
+                <div style="font-weight:800;margin-bottom:4px;">${role.name}</div>
+                <div style="font-size:12px;opacity:.9;">${role.desc}</div>
+            `;
+                div.onclick = () => openRoleDetails(fieldName, role);
+                grid.appendChild(div);
+            });
+
+            document.getElementById('jobFieldSection').style.display = 'none';
+            document.getElementById('roleSection').style.display = 'block';
+            document.getElementById('roleDetailsSection').style.display = 'none';
+            document.getElementById('quizSection').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        function backToJobFields() {
+            document.getElementById('roleSection').style.display = 'none';
+            document.getElementById('roleDetailsSection').style.display = 'none';
+            document.getElementById('quizSection').style.display = 'none';
+            document.getElementById('jobFieldSection').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        // Role details (instructions + Start Practice)
+        function openRoleDetails(fieldName, role) {
+            currentRole = { fieldName, ...role };
+
+            const titleEl = document.getElementById('roleDetailsTitle');
+            const subEl = document.getElementById('roleDetailsSubtitle');
+            const listEl = document.getElementById('roleInstructions');
+
+            titleEl.textContent = `${role.icon} ${role.name}`;
+            subEl.textContent = `Mock interview for ${role.name} in ${fieldName}.`;
+
+            const points = [
+                "There will be 10 role‑specific interview questions.",
+                "Try to answer each question within 60–90 seconds.",
+                "Use real projects and examples wherever possible.",
+                "Focus on clarity, communication and problem‑solving."
+            ];
+
+            listEl.innerHTML = "";
+            points.forEach(p => {
+                const li = document.createElement('li');
+                li.textContent = p;
+                listEl.appendChild(li);
+            });
+
+            document.getElementById('roleDetailsSection').style.display = 'block';
+            document.getElementById('quizSection').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        // Start Practice -> show 10‑question quiz
+        function startPracticeForCurrentRole() {
+            if (!currentRole) {
+                alert("Please select a role first.");
+                return;
+            }
+
+            const list = quizQuestionsByRole[currentRole.key];
+            if (!list || list.length < 1) {
+                alert("Questions for this role are not added yet.");
+                return;
+            }
+
+            // 1. Body par active class lagao (baaki sab chhup jayega)
+            document.body.classList.add('practice-active');
+
+            // 2. Nayi screen ka content fill karo
+            document.getElementById('fsTitle').textContent = "Interview: " + currentRole.name;
+            document.getElementById('fsSubtitle').textContent = "Answer the following questions to test your knowledge.";
+
+            const container = document.getElementById('fsQuestionList');
+            container.innerHTML = "";
+
+            list.forEach((q, index) => {
+                const div = document.createElement('div');
+                div.className = "q-box";
+                div.innerHTML = `
+            <p style="font-weight:600; margin-bottom:12px;">Q${index + 1}. ${q}</p>
+            <textarea style="width:100%; min-height:100px; background:#020617; border:1px solid #374151; color:#fff; border-radius:8px; padding:12px;" placeholder="Type your detailed answer here..."></textarea>
+        `;
+                container.appendChild(div);
+            });
+
+            window.scrollTo(0, 0);
+        }
+
+        function submitQuiz() {
+            if (!currentRole) {
+                alert("Please select a role and start the quiz first.");
+                return;
+            }
+
+            const container = document.getElementById('quizQuestionsContainer');
+            const textareas = container.querySelectorAll('textarea');
+            let attempted = 0;
+            textareas.forEach(t => {
+                if (t.value.trim().length > 0) attempted++;
+            });
+
+            const total = textareas.length || 10;
+            const percent = Math.round((attempted / total) * 100);
+
+            quizHistory.unshift({
+                roleName: currentRole.name,
+                score: percent
+            });
+            if (quizHistory.length > 5) quizHistory.pop();
+
+            alert(`Test ended for role: ${currentRole.name}. You attempted ${attempted}/${total} questions (~${percent}%).`);
+
+            document.getElementById('quizSection').style.display = 'none';
+        }
+
+        // REPORTS
+
+        function showReports() {
+            hideAllDashboardSections();
+            const reports = document.getElementById('reportsSection');
+            if (reports) reports.style.display = 'block';
+            openReportTab('dashboard');
+            window.scrollTo(0, 0);
+        }
+
+        function openReportTab(tab) {
+            const dash = document.getElementById('reportDashboard');
+            const fb = document.getElementById('reportFeedback');
+            if (!dash || !fb) return;
+
+            if (tab === 'dashboard') {
+                dash.style.display = 'block';
+                fb.style.display = 'none';
+                renderPerformanceChart();
+            } else {
+                dash.style.display = 'none';
+                fb.style.display = 'block';
+                renderFeedbackTips();
+            }
+        }
+
+        function renderPerformanceChart() {
+            const container = document.getElementById('performanceChart');
+            if (!container) return;
+
+            if (quizHistory.length === 0) {
+                container.innerHTML = `<p style="font-size:13px;opacity:.8;">
+                No quiz data yet. Complete a quiz to see your performance here.
+            </p>`;
+                return;
+            }
+
+            container.innerHTML = "";
+            quizHistory.forEach(entry => {
+                const row = document.createElement('div');
+                row.style.marginBottom = "10px";
+                row.innerHTML = `
+                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;">
+                    <span>${entry.roleName}</span>
+                    <span>${entry.score}%</span>
+                </div>
+                <div style="width:100%;height:8px;border-radius:999px;background:#111827;">
+                    <div style="height:8px;border-radius:999px;background:#22c55e;width:${entry.score}%;"></div>
+                </div>
+            `;
+                container.appendChild(row);
+            });
+        }
+
+        function renderFeedbackTips() {
+            const list = document.getElementById('feedbackList');
+            if (!list) return;
+
+            list.innerHTML = "";
+
+            if (quizHistory.length === 0) {
+                const li = document.createElement('li');
+                li.textContent = "Take at least one quiz. Feedback will be generated based on your answers.";
+                list.appendChild(li);
+                return;
+            }
+
+            const latest = quizHistory[0];
+            const tips = [];
+
+            if (latest.score >= 80) {
+                tips.push("Great work! Start focusing on advanced topics and system design for this role.");
+                tips.push("Practice explaining your projects with clear impact and metrics.");
+            } else if (latest.score >= 50) {
+                tips.push("You have a decent base. Revise questions you skipped or felt unsure about.");
+                tips.push("Try timing your answers to 60–90 seconds to improve communication.");
+            } else {
+                tips.push("Focus on fundamentals for this role before attempting harder quizzes.");
+                tips.push("After each question, write the ideal answer and compare with your attempt.");
+            }
+
+            tips.push("Repeat the quiz after 2–3 days to check if your score is improving.");
+
+            tips.forEach(t => {
+                const li = document.createElement('li');
+                li.textContent = t;
+                list.appendChild(li);
+            });
+        }
+
+        function generateCertificate() {
+            if (quizHistory.length === 0) {
+                alert("Complete at least one quiz before generating a certificate.");
+                return;
+            }
+            const avg =
+                Math.round(quizHistory.reduce((s, q) => s + q.score, 0) / quizHistory.length);
+            if (avg < 60) {
+                alert(`Current average score is ${avg}%. Reach 60%+ to unlock the certificate.`);
+                return;
+            }
+            alert(`Congratulations! (Demo) Certificate unlocked with average score ${avg}%. In a real app a PDF/download link would be generated.`);
+        }
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-item .faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!isOpen) {
+                    item.classList.add('open');
+                }
+            });
+        });
+
+        function hideAllDashboardSections() {
+            // Is list mein 'settingsSection' add kar dijiye
+            const ids = ['inviteSection', 'bookmarkSection', 'uploadSection', 'helpSection', 'settingsSection'];
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = 'none';
+            });
+            // Baki dashboard ke sections bhi chhupao
+            document.getElementById('jobFieldSection').style.display = 'none';
+            document.getElementById('roleSection').style.display = 'none';
+            document.getElementById('roleDetailsSection').style.display = 'none';
+            document.getElementById('quizSection').style.display = 'none';
+            const reports = document.getElementById('reportsSection');
+            if (reports) reports.style.display = 'none';
+        }
+
+        function showInvite() {
+            hideAllDashboardSections();
+            document.getElementById('inviteSection').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function showBookmarks() {
+            hideAllDashboardSections();
+            document.getElementById('bookmarkSection').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function showUpload() {
+            hideAllDashboardSections();
+            document.getElementById('uploadSection').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function showHelp() {
+            hideAllDashboardSections();
+            document.getElementById('helpSection').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function showSettings() {
+            hideAllDashboardSections(); // Purane saare sections chhupao
+
+            // Naya settings wala section dikhao
+            const settingsSec = document.getElementById('settingsSection');
+            if (settingsSec) {
+                settingsSec.style.display = 'block';
+            }
+
+            // Box mein user ka purana naam pehle se likh do
+            if (currentUser) {
+                document.getElementById('updateName').value = currentUser.userId;
+            }
+            window.scrollTo(0, 0);
+        }
+
+        // Naya naam save karne ke liye function
+        function updateProfile() {
+            const newName = document.getElementById('updateName').value.trim();
+            if (!newName) {
+                alert("Naam khali nahi ho sakta!");
+                return;
+            }
+            currentUser.userId = newName;
+            localStorage.setItem('interfinixUser', JSON.stringify(currentUser));
+
+            // Screen par naam update karo
+            document.getElementById('userNameDisplay').textContent = newName;
+            document.getElementById('userAvatar').textContent = newName.charAt(0).toUpperCase();
+            alert("Profile Update Ho Gayi!");
+        }
+
+        // Invite: copy + share
+        function copyInviteLink() {
+            const input = document.getElementById('inviteLink');
+            if (!input) return;
+
+            input.select();
+            input.setSelectionRange(0, 99999);
+
+            navigator.clipboard.writeText(input.value)
+                .then(() => alert('Invite link copied!'))
+                .catch(() => alert('Could not copy. Please copy manually.'));
+        }
+
+        function shareInvite(type) {
+            const link = document.getElementById('inviteLink')?.value || window.location.href;
+            const text = encodeURIComponent('Join me on Interfinix for AI interview practice: ' + link);
+            let url = '';
+
+            if (type === 'whatsapp') {
+                url = 'https://wa.me/?text=' + text;
+            } else if (type === 'telegram') {
+                url = 'https://t.me/share/url?url=' + encodeURIComponent(link) + '&text=' + text;
+            } else if (type === 'sms') {
+                url = 'sms:?body=' + text;
+            } else if (type === 'email') {
+                url = 'mailto:?subject=' + encodeURIComponent('Interfinix Invite') + '&body=' + text;
+            }
+
+            if (url) {
+                window.open(url, '_blank');
+            }
+        }
+
+        // Upload resume submit
+        function submitResume() {
+            const fileInput = document.getElementById('resumeFile');
+            if (!fileInput || !fileInput.files || !fileInput.files[0]) {
+                alert('Please select a resume file first.');
+                return;
+            }
+            const file = fileInput.files[0];
+            alert('Resume "' + file.name + '" uploaded successfully (frontend demo).');
+        }
+
+        // default load
+        showHome();
+        // Isse confirm hota hai ki function globally available hai
+        window.exitPracticeMode = function () {
+            if (confirm("Exit practice? Your typed answers will be lost.")) {
+                // Yeh line 'practice-active' class hata degi jisse dashboard wapas dikhega
+                document.body.classList.remove('practice-active');
+
+                // Page ko upar scroll karein
+                window.scrollTo(0, 0);
+            }
+        };
+        // 1. Settings dikhane wala function
+        function showSettings() {
+            hideAllDashboardSections(); // Sabse pehle baaki sab chhupao (Job fields, FAQ etc.)
+            document.getElementById('settingsSection').style.display = 'block'; // Settings wala box dikhao
+
+            // Input box mein user ka purana naam pehle se likha hua dikhe
+            if (currentUser) {
+                document.getElementById('updateName').value = currentUser.userId;
+            }
+        }
+
+        // 2. Naam badalne wala function
+        function updateProfile() {
+            const newName = document.getElementById('updateName').value.trim();
+            if (!newName) {
+                alert("Naam khali nahi chhod sakte!");
+                return;
+            }
+
+            currentUser.userId = newName; // Naya naam save karo
+            localStorage.setItem('interfinixUser', JSON.stringify(currentUser)); // Computer ki memory mein save karo
+
+            // Website par har jagah naya naam dikhao
+            document.getElementById('userNameDisplay').textContent = newName;
+            document.getElementById('userAvatar').textContent = newName.charAt(0).toUpperCase();
+
+            alert("Naam badal gaya!");
+        }
+
+        // 3. Password badalne wala function
+        function changePassword() {
+            const newPass = document.getElementById('newPassword').value;
+            if (newPass.length < 4) {
+                alert("Password kam se kam 4 aksharo ka hona chahiye.");
+                return;
+            }
+            currentUser.password = newPass;
+            localStorage.setItem('interfinixUser', JSON.stringify(currentUser));
+            alert("Password badal gaya!");
+        }
+    </script>
+</body>
+
+</html>
